@@ -31,6 +31,15 @@ label {width: 150px; display:inline-block;}
 
 <label for=age>Age:</label>
   <input id=age name=age type=text pattern="[0-9.]+" required placeholder="19"></input><br>
+<label for=email>Email:</label>
+  <input name=email type=email
+      placeholder="your@email.com"></input><br>
+
+<label for=phone>Phone:</label>
+  <input name=phone type=tel
+         pattern=".?[0-9]{3}[^0-9]*[0-9]{3}.?[0-9]{4}"
+         title="US 10 digit phone number"
+         placeholder="555-867-5309"></input><br>
 
 <div id="age_gate">
 <small>For participants under 18 years old, we are required to communicate with a parent or guardian.<br>
@@ -40,17 +49,17 @@ Please provide contact information for an adult we can contact.<br>
   <input name=contact_name
       type=text
       placeholder="Sarah"></input><br>
-</div>
 
 <label for=email>Contact Email:</label>
-  <input name=email type=email
+  <input name=contact_email type=email
       placeholder="your@email.com"></input><br>
 
 <label for=phone>Contact Phone:</label>
-  <input name=phone type=tel
+  <input name=contact_phone type=tel
          pattern=".?[0-9]{3}[^0-9]*[0-9]{3}.?[0-9]{4}"
          title="US 10 digit phone number"
          placeholder="555-867-5309"></input><br>
+</div>
 
 
 <input type="submit" name="submit" value="Submit">
@@ -61,10 +70,10 @@ var age_gate = document.getElementById("age_gate");
 var age = document.getElementById("age");
 
 age.addEventListener('input', function (evt) {
-   if(parseInt(this.value)>=18){
-      age_gate.hidden=1;
-   } else {
+   if(parseInt(this.value)<18){
       age_gate.hidden=0;
+   } else {
+      age_gate.hidden=1;
    }
 });
 </script>
