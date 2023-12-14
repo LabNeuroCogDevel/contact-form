@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
 
     $headers = "From:" . $from;
     mail($to,$subject,$message,$headers);
-    echo "Thank you, we will contact you shortly.";
+    echo "Thank you! We will contact you shortly.";
     //header('Location: https://lncd.pitt.edu/wp/thank-you/');
 } else {
 ?>
