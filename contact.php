@@ -21,9 +21,6 @@ if(isset($_POST['submit'])){
 <style>
 label {width: 150px; display:inline-block;}
 </style>
-<script>
-
-</script>
 </head>
 <body>
 
@@ -32,29 +29,45 @@ label {width: 150px; display:inline-block;}
   <input name=name type=text
       placeholder="Anjnulo" required></input><br>
 
-<label for=email>Email:</label>
+<label for=age>Age:</label>
+  <input id=age name=age type=text pattern="[0-9.]+" required placeholder="19"></input><br>
+
+<div id="age_gate">
+<small>For participants under 18 years old, we are required to communicate with a parent or guardian.<br>
+Please provide contact information for an adult we can contact.<br>
+</small>
+<label for=contact_name>Contact Name:</label>
+  <input name=contact_name
+      type=text
+      placeholder="Sarah"></input><br>
+</div>
+
+<label for=email>Contact Email:</label>
   <input name=email type=email
       placeholder="your@email.com"></input><br>
 
-<label for=phone>Phone:</label>
+<label for=phone>Contact Phone:</label>
   <input name=phone type=tel
          pattern=".?[0-9]{3}[^0-9]*[0-9]{3}.?[0-9]{4}"
          title="US 10 digit phone number"
          placeholder="555-867-5309"></input><br>
 
-<label for=age>Age:</label>
-  <input name=age type=text pattern="[0-9.]+" required placeholder="19"></input><br>
-
-<label style="width:90%" for=parent>Parent phone or email <small>if under 18yo</small>:</label> </br>
-  <input style="margin-left:150px"
-      name=parent
-      type=text
-      size=30
-      placeholder="mom@email.com/555-555-5555"></input><br>
 
 <input type="submit" name="submit" value="Submit">
 </form>
 </body>
+<script>
+var age_gate = document.getElementById("age_gate");
+var age = document.getElementById("age");
+
+age.addEventListener('input', function (evt) {
+   if(parseInt(this.value)>=18){
+      age_gate.hidden=1;
+   } else {
+      age_gate.hidden=0;
+   }
+});
+</script>
 </html>
 
 <?php 
