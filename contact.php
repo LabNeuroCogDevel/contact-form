@@ -27,6 +27,10 @@ label {width: 150px; display:inline-block;}
 <form action="https://lncd.pitt.edu/contact.php" method="post"
   onsubmit="return check_submit()"
 >
+
+ <!-- store where iframe might be in -->
+<input name=main_url id=main_url type=hidden></input>
+
 <label for=name>First Name:</label>
   <input name=name type=text
       placeholder="Anjnulo" required></input><br>
@@ -110,6 +114,11 @@ function check_submit(){
    document.getElementById("message").innerHTML = msg + "<br>";
    return(okay)
 }
+
+// in iframe? from where?
+try {
+   document.getElementById("main_url").value = window.parent.location
+} finally { 1; }
 </script>
 </html>
 
